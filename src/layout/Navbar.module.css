@@ -1,0 +1,165 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  background-color: var(--color-background);
+  border-bottom: 1px solid transparent;
+  z-index: 50;
+  transition: all 0.3s ease;
+}
+
+.scrolled {
+  box-shadow: var(--shadow-sm);
+  border-bottom-color: var(--color-border);
+  /* Slight transparency when scrolled */
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.logo a {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.desktopNav {
+  display: none;
+}
+
+.linkList {
+  display: flex;
+  gap: var(--space-6);
+}
+
+.link {
+  color: var(--color-text-main);
+  font-weight: 500;
+  position: relative;
+}
+
+.link:hover {
+  color: var(--color-accent);
+}
+
+.activeLink {
+  color: var(--color-accent);
+}
+
+/* Underline indicator for active desktop link */
+.activeLink::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-accent);
+  border-radius: var(--radius-full);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.ctaButton {
+  display: none;
+  padding: 0; /* Remove default button padding since we put the link inside */
+}
+
+.ctaLink {
+  color: inherit;
+  display: flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+}
+.ctaLink:hover {
+  color: inherit;
+}
+
+.mobileToggle {
+  background: transparent;
+  border: none;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-1);
+}
+
+/* Mobile Menu Dropdown */
+.mobileMenu {
+  position: absolute;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.mobileMenuOpen {
+  max-height: 400px; /* Arbitrary large height to allow content to expand */
+}
+
+.mobileLinkList {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4);
+}
+
+.mobileLink {
+  display: block;
+  padding: var(--space-3) 0;
+  color: var(--color-text-main);
+  font-weight: 500;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.activeMobileLink {
+  color: var(--color-accent);
+}
+
+.mobileActionItem {
+  margin-top: var(--space-4);
+}
+
+.mobileCtaLink {
+  display: block;
+  text-align: center;
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+}
+
+/* Desktop Media Query */
+@media (min-width: 1024px) {
+  .desktopNav {
+    display: block;
+  }
+  .ctaButton {
+    display: inline-flex;
+  }
+  .mobileToggle {
+    display: none;
+  }
+  .mobileMenu {
+    display: none;
+  }
+}

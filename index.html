@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Clean up Service Workers from previous projects on localhost to prevent caching and port conflicts -->
+    <script>
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            if (registrations.length > 0) {
+              Promise.all(registrations.map(r => r.unregister())).then(function() {
+                console.log('Legacy Service Workers cleared. Reloading to apply clean state...');
+                window.location.reload();
+              });
+            }
+          });
+        }
+      }
+    </script>
+    <!-- SEO Meta Tags -->
+    <title>Dr. Salah - Medical Portfolio</title>
+    <meta name="description" content="Medical portfolio of Dr. Salah, specialized in Interventional Cardiology, Radiology, and Medical Devices." />
+    <meta name="keywords" content="Cardiology, Interventional Radiology, Medical Equipment, Dr. Salah, Egypt" />
+    <meta name="author" content="Dr. Salah" />
+
+    <!-- Open Graph Markup -->
+    <meta property="og:title" content="Dr. Salah - Medical Portfolio" />
+    <meta property="og:description" content="Medical portfolio of Dr. Salah, specialized in Interventional Cardiology, Radiology, and Medical Devices." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://example.com" />
+    <meta property="og:image" content="https://example.com/og-image.jpg" />
+
+    <!-- Font Loading Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;700&family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Physician",
+      "name": "Dr. Salah",
+      "jobTitle": "Interventional Cardiologist",
+      "url": "https://example.com",
+      "medicalSpecialty": [
+        "Cardiovascular",
+        "Interventional Radiology"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cairo",
+        "addressCountry": "Egypt"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

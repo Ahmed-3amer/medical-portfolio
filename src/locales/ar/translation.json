@@ -1,0 +1,102 @@
+{
+  "nav": {
+    "about": "نبذة عني",
+    "expertise": "الخبرات",
+    "experience": "التاريخ المهني",
+    "certificates": "الشهادات",
+    "cta": "تواصل معي"
+  },
+  "hero": {
+    "eyebrow": "خبير أمراض القلب التداخلية",
+    "headline": "د. صلاح",
+    "subheadline": "حلول طبية متقدمة ورعاية فائقة",
+    "cta_primary": "تواصل معي"
+  },
+  "about": {
+    "title": "نبذة عني",
+    "subtitle": "الخلفية المهنية",
+    "biography": "نص تعريفي مؤقت...",
+    "mission_label": "رسالتي",
+    "mission": "نص رسالة مؤقت...",
+    "values_label": "القيم الأساسية",
+    "value_01": "الاحترافية",
+    "value_02": "الثقة",
+    "value_03": "الدقة",
+    "value_04": "الرعاية",
+    "value_05": "التبسيط",
+    "value_06": "الثقة بالنفس"
+  },
+  "expertise": {
+    "title": "مجالات الخبرة",
+    "subtitle": "التخصصات الطبية",
+    "interventional-cardiology": {
+      "title": "أمراض القلب التداخلية",
+      "description": "وصف مؤقت"
+    },
+    "interventional-radiology": {
+      "title": "الأشعة التداخلية",
+      "description": "وصف مؤقت"
+    },
+    "neurointerventional": {
+      "title": "العصبية التداخلية",
+      "description": "وصف مؤقت"
+    },
+    "diagnostic-imaging": {
+      "title": "التصوير التشخيصي",
+      "description": "وصف مؤقت"
+    },
+    "image-guided-treatment": {
+      "title": "العلاج الموجه بالصور",
+      "description": "وصف مؤقت"
+    },
+    "medical-devices-trade": {
+      "title": "تجارة الأجهزة الطبية",
+      "description": "وصف مؤقت"
+    },
+    "medical-equipment": {
+      "title": "المعدات الطبية",
+      "description": "وصف مؤقت"
+    },
+    "cosmetic-equipment": {
+      "title": "أجهزة التجميل",
+      "description": "وصف مؤقت"
+    }
+  },
+  "experience": {
+    "title": "التاريخ المهني",
+    "subtitle": "مسيرتي المهنية"
+  },
+  "certificates": {
+    "title": "الشهادات والعضويات",
+    "subtitle": "الاعتراف المهني"
+  },
+  "contact": {
+    "title": "تواصل معي",
+    "subtitle": "لنبق على اتصال",
+    "invitation_text": "يسعدني تواصلكم...",
+    "label_phone": "الهاتف",
+    "label_email": "البريد الإلكتروني",
+    "label_linkedin": "لينكد إن",
+    "label_location": "العنوان",
+    "label_whatsapp": "واتساب",
+    "location": "القاهرة، مصر"
+  },
+  "footer": {
+    "tagline": "حلول طبية متقدمة",
+    "nav_label": "روابط سريعة",
+    "copyright": "جميع الحقوق محفوظة.",
+    "social_label": "روابط التواصل الاجتماعي"
+  },
+  "aria": {
+    "nav_main": "القائمة الرئيسية",
+    "nav_footer": "قائمة تذييل الصفحة",
+    "nav_mobile": "قائمة الهاتف المحمول",
+    "menu_open": "افتح القائمة",
+    "menu_close": "أغلق القائمة",
+    "lang_switch": "تغيير اللغة",
+    "social_linkedin": "ملف لينكد إن (يفتح في نافذة جديدة)",
+    "contact_phone": "اتصل بـ {{clientName}} على {{number}}",
+    "contact_email": "راسل {{clientName}} على {{email}}",
+    "contact_whatsapp": "تواصل مع {{clientName}} على واتساب على رقم {{number}}"
+  }
+}

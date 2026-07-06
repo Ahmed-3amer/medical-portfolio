@@ -1,0 +1,102 @@
+{
+  "nav": {
+    "about": "About",
+    "expertise": "Expertise",
+    "experience": "Experience",
+    "certificates": "Certificates",
+    "cta": "Contact Me"
+  },
+  "hero": {
+    "eyebrow": "Interventional Cardiology Expert",
+    "headline": "Dr. Salah Portfolio",
+    "subheadline": "Advanced Medical Solutions and Care",
+    "cta_primary": "Contact Me"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Professional Background",
+    "biography": "Placeholder biography text...",
+    "mission_label": "My Mission",
+    "mission": "Placeholder mission text...",
+    "values_label": "Core Values",
+    "value_01": "Professionalism",
+    "value_02": "Trust",
+    "value_03": "Precision",
+    "value_04": "Care",
+    "value_05": "Simplicity",
+    "value_06": "Confidence"
+  },
+  "expertise": {
+    "title": "Areas of Expertise",
+    "subtitle": "Specialized Medical Fields",
+    "interventional-cardiology": {
+      "title": "Interventional Cardiology",
+      "description": "Placeholder description"
+    },
+    "interventional-radiology": {
+      "title": "Interventional Radiology",
+      "description": "Placeholder description"
+    },
+    "neurointerventional": {
+      "title": "Neurointerventional",
+      "description": "Placeholder description"
+    },
+    "diagnostic-imaging": {
+      "title": "Diagnostic Imaging",
+      "description": "Placeholder description"
+    },
+    "image-guided-treatment": {
+      "title": "Image-Guided Treatment",
+      "description": "Placeholder description"
+    },
+    "medical-devices-trade": {
+      "title": "Medical Devices Trade",
+      "description": "Placeholder description"
+    },
+    "medical-equipment": {
+      "title": "Medical Equipment",
+      "description": "Placeholder description"
+    },
+    "cosmetic-equipment": {
+      "title": "Cosmetic Equipment",
+      "description": "Placeholder description"
+    }
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "subtitle": "Career Journey"
+  },
+  "certificates": {
+    "title": "Certificates & Memberships",
+    "subtitle": "Professional Recognition"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Get in touch",
+    "invitation_text": "Feel free to reach out...",
+    "label_phone": "Phone",
+    "label_email": "Email",
+    "label_linkedin": "LinkedIn",
+    "label_location": "Location",
+    "label_whatsapp": "WhatsApp",
+    "location": "Cairo, Egypt"
+  },
+  "footer": {
+    "tagline": "Advanced Medical Solutions",
+    "nav_label": "Quick Links",
+    "copyright": "All rights reserved.",
+    "social_label": "Social Media Links"
+  },
+  "aria": {
+    "nav_main": "Main Navigation",
+    "nav_footer": "Footer Navigation",
+    "nav_mobile": "Mobile Navigation",
+    "menu_open": "Open Menu",
+    "menu_close": "Close Menu",
+    "lang_switch": "Switch Language",
+    "social_linkedin": "LinkedIn profile (opens in new tab)",
+    "contact_phone": "Call {{clientName}} at {{number}}",
+    "contact_email": "Email {{clientName}} at {{email}}",
+    "contact_whatsapp": "Message {{clientName}} on WhatsApp at {{number}}"
+  }
+}

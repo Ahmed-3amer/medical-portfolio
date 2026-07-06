@@ -1,0 +1,83 @@
+.experienceSection {
+  padding: var(--space-20) 0;
+  background-color: var(--color-surface-alt);
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timelineItem {
+  display: flex;
+  gap: var(--space-6);
+}
+
+.timelineMarker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 24px;
+  flex-shrink: 0;
+}
+
+.markerDot {
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.2);
+  margin-top: 6px;
+}
+
+.markerLine {
+  width: 2px;
+  flex-grow: 1;
+  background-color: var(--color-border);
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.timelineContent {
+  flex: 1;
+  padding-bottom: var(--space-10);
+}
+
+.year {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-bottom: var(--space-2);
+  letter-spacing: 0.05em;
+}
+
+.jobTitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--space-1);
+}
+
+.institution {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin-bottom: var(--space-3);
+}
+
+.description {
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+  line-height: 1.6;
+}
+
+/* RTL Adjustments for timeline marker layout */
+[dir="rtl"] .timelineItem {
+  /* gap handles spacing, we just need to ensure the marker stays visual left/right natively */
+}

@@ -1,0 +1,23 @@
+@import './base.css';
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Bi-directional utility classes if needed */
+[dir="rtl"] {
+  /* RTL specific overrides if any */
+}
+
+/* Ensure images maintain aspect ratio inside their containers */
+img {
+  height: auto;
+}
