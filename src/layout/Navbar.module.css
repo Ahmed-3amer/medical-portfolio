@@ -7,15 +7,14 @@
   background-color: var(--color-background);
   border-bottom: 1px solid transparent;
   z-index: 50;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .scrolled {
-  box-shadow: var(--shadow-sm);
-  border-bottom-color: var(--color-border);
-  /* Slight transparency when scrolled */
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
+  height: 60px; /* Slightly reduced height */
+  background-color: var(--color-primary); /* Deep Navy */
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.15), 0 2px 8px -1px rgba(15, 23, 42, 0.1); /* Custom light professional shadow */
+  border-bottom-color: rgba(255, 255, 255, 0.05);
 }
 
 .navContainer {
@@ -30,6 +29,11 @@
   font-size: var(--text-xl);
   font-weight: 700;
   color: var(--color-primary);
+  transition: color 0.3s ease;
+}
+
+.scrolled .logo a {
+  color: var(--color-surface);
 }
 
 .desktopNav {
@@ -45,6 +49,7 @@
   color: var(--color-text-main);
   font-weight: 500;
   position: relative;
+  transition: color 0.3s ease;
 }
 
 .link:hover {
@@ -52,6 +57,18 @@
 }
 
 .activeLink {
+  color: var(--color-accent);
+}
+
+.scrolled .link {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.scrolled .link:hover {
+  color: var(--color-accent);
+}
+
+.scrolled .activeLink {
   color: var(--color-accent);
 }
 
@@ -96,12 +113,28 @@
   align-items: center;
   justify-content: center;
   padding: var(--space-1);
+  transition: color 0.3s ease;
+}
+
+.scrolled .mobileToggle {
+  color: var(--color-surface);
+}
+
+.scrolled .langSwitch {
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.scrolled .langSwitch:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 /* Mobile Menu Dropdown */
 .mobileMenu {
   position: absolute;
-  top: var(--header-height);
+  top: 100%;
   left: 0;
   right: 0;
   background-color: var(--color-background);
@@ -109,7 +142,12 @@
   box-shadow: var(--shadow-md);
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease-in-out;
+  transition: max-height 0.3s ease-in-out, background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scrolled .mobileMenu {
+  background-color: var(--color-primary);
+  border-bottom-color: rgba(255, 255, 255, 0.05);
 }
 
 .mobileMenuOpen {
@@ -128,9 +166,19 @@
   color: var(--color-text-main);
   font-weight: 500;
   border-bottom: 1px solid var(--color-border);
+  transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 .activeMobileLink {
+  color: var(--color-accent);
+}
+
+.scrolled .mobileLink {
+  color: rgba(255, 255, 255, 0.8);
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+.scrolled .activeMobileLink {
   color: var(--color-accent);
 }
 

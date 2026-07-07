@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { Container } from '@/components/Container';
-import { Button } from '@/components/Button';
+// import { Button } from '@/components/Button';
 import { fadeIn, fadeInUp } from '@/utils/animations';
 import classes from './Hero.module.css';
 
@@ -20,10 +20,10 @@ export default function Hero() {
       <div className={classes.bgImage} />
       
       {/* Gradient Overlay Layer */}
-      <div className={classes.bgOverlay} />
+      <div className={classes.bgOverlay} aria-hidden="true" role="presentation" />
 
       {/* Optional Pattern Overlay */}
-      <div className={classes.bgPattern} />
+      <div className={classes.bgPattern} aria-hidden="true" role="presentation" />
 
       {/* Content Layer */}
       <Container className={classes.contentContainer}>
@@ -58,6 +58,7 @@ export default function Hero() {
             {t('hero.subheadline')}
           </motion.p>
           
+          {/* 
           <motion.div
             className={classes.ctaWrapper}
             initial={initial}
@@ -69,6 +70,7 @@ export default function Hero() {
               <a href="#contact" className={classes.ctaLink}>{t('hero.cta_primary')}</a>
             </Button>
           </motion.div>
+          */}
         </div>
       </Container>
     </section>

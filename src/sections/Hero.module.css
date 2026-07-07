@@ -1,10 +1,11 @@
 .hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: var(--space-20) 0;
+  padding: 0;
 }
 
 .bgImage {
@@ -12,26 +13,59 @@
   inset: 0;
   /* Fallback background color */
   background-color: var(--color-primary);
-  background-image: url('/assets/hero-bg.webp');
-  background-size: cover;
+  background-image: url('/assets/hero-mobile-bg.webp');
+  background-size: 100% 100%;
   background-position: center;
   z-index: 1;
 }
 
+@media (min-width: 768px) {
+  .hero {
+    min-height: 100vh;
+    height: auto;
+    aspect-ratio: auto;
+    padding: var(--space-20) 0;
+  }
+  .bgImage {
+    background-image: url('/assets/hero-bg.webp');
+    background-size: cover;
+  }
+  .bgOverlay {
+    display: block;
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.8) 100%);
+  }
+  .bgPattern {
+    display: block;
+    background-image: radial-gradient(#ffffff 2px, transparent 2px);
+    background-size: 32px 32px;
+  }
+  .eyebrow {
+    display: block;
+  }
+  .headline {
+    display: block;
+  }
+  .subheadline {
+    display: block;
+  }
+}
+
 .bgOverlay {
+  display: block;
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.8) 100%);
+  background: linear-gradient(to bottom, rgba(15, 23, 42, 0.2) 0%, rgba(15, 23, 42, 0.5) 100%);
   z-index: 2;
 }
 
 .bgPattern {
+  display: block;
   position: absolute;
   inset: 0;
   z-index: 3;
-  opacity: 0.05;
-  background-image: radial-gradient(var(--color-surface) 1px, transparent 1px);
-  background-size: 20px 20px;
+  background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  animation: patternMove 8s ease-in-out infinite;
 }
 
 .contentContainer {
@@ -49,6 +83,7 @@
 }
 
 .eyebrow {
+  display: none;
   font-family: var(--font-sans);
   font-size: var(--text-base);
   font-weight: 600;
@@ -59,12 +94,14 @@
 }
 
 .headline {
+  display: none;
   font-size: var(--text-h1, clamp(2.5rem, 5vw, 3.75rem));
   font-weight: 800;
   margin-bottom: var(--space-4);
 }
 
 .subheadline {
+  display: none;
   font-size: var(--text-lg);
   font-weight: 400;
   color: rgba(255, 255, 255, 0.8);
@@ -104,5 +141,20 @@
   }
   .subheadline {
     font-size: var(--text-xl);
+  }
+}
+
+@keyframes patternMove {
+  0% {
+    background-position: 0px 0px;
+    opacity: 0.08;
+  }
+  50% {
+    background-position: 6px 6px;
+    opacity: 0.15;
+  }
+  100% {
+    background-position: 0px 0px;
+    opacity: 0.08;
   }
 }
