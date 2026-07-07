@@ -19,36 +19,7 @@
   z-index: 1;
 }
 
-@media (min-width: 768px) {
-  .hero {
-    min-height: 100vh;
-    height: auto;
-    aspect-ratio: auto;
-    padding: var(--space-20) 0;
-  }
-  .bgImage {
-    background-image: url('/assets/hero-bg.webp');
-    background-size: cover;
-  }
-  .bgOverlay {
-    display: block;
-    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.8) 100%);
-  }
-  .bgPattern {
-    display: block;
-    background-image: radial-gradient(#ffffff 2px, transparent 2px);
-    background-size: 32px 32px;
-  }
-  .eyebrow {
-    display: block;
-  }
-  .headline {
-    display: block;
-  }
-  .subheadline {
-    display: block;
-  }
-}
+/* Media query moved to the bottom to prevent overriding by default classes */
 
 .bgOverlay {
   display: block;
@@ -63,13 +34,13 @@
   position: absolute;
   inset: 0;
   z-index: 3;
-  background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px);
+  background-image: radial-gradient(#ffffff 1.3px, transparent 1.3px);
   background-size: 24px 24px;
   animation: patternMove 8s ease-in-out infinite;
 }
 
 .contentContainer {
-  position: relative;
+  position: static;
   z-index: 10;
   display: flex;
   justify-content: center;
@@ -77,6 +48,7 @@
 }
 
 .content {
+  position: static;
   text-align: center;
   max-width: 100%;
   color: var(--color-surface);
@@ -113,6 +85,10 @@
 .ctaWrapper {
   display: flex;
   justify-content: center;
+  position: absolute;
+  bottom: 12%;
+  right: 8%;
+  z-index: 20;
 }
 
 .ctaButton {
@@ -132,6 +108,34 @@
 @media (min-width: 640px) {
   .content {
     max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero {
+    min-height: 100vh;
+    height: auto;
+    aspect-ratio: auto;
+    padding: var(--space-20) 0;
+  }
+  .bgImage {
+    background-image: url('/assets/hero-bg.webp');
+    background-size: cover;
+  }
+  .bgOverlay {
+    display: block;
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.8) 100%);
+  }
+  .bgPattern {
+    display: block;
+    background-image: radial-gradient(#ffffff 1.7px, transparent 1.7px);
+    background-size: 32px 32px;
+  }
+  .contentContainer {
+    position: relative;
+  }
+  .ctaWrapper {
+    display: none;
   }
 }
 
