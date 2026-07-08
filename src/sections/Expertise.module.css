@@ -1,6 +1,6 @@
 .expertiseSection {
   padding: var(--space-20) 0;
-  background-color: var(--color-background);
+  background-color: var(--color-primary);
 }
 
 .grid {
@@ -15,6 +15,8 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: start;
+  background-color: var(--color-primary-light) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
 .iconWrapper {
@@ -23,7 +25,7 @@
   justify-content: center;
   width: 56px;
   height: 56px;
-  background-color: rgba(14, 165, 233, 0.1);
+  background-color: rgba(14, 165, 233, 0.15);
   color: var(--color-accent);
   border-radius: var(--radius-md);
   margin-bottom: var(--space-5);
@@ -41,12 +43,12 @@
   font-family: var(--font-heading);
   font-size: var(--text-xl);
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--color-surface);
   margin-bottom: var(--space-2);
 }
 
 .cardDesc {
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.7);
   font-size: var(--text-base);
   line-height: 1.6;
 }

@@ -39,6 +39,7 @@ export default function Expertise() {
         <SectionHeader 
           titleKey="expertise.title" 
           subtitleKey="expertise.subtitle" 
+          theme="dark"
         />
 
         <motion.div 

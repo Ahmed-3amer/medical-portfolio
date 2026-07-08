@@ -8,7 +8,8 @@ import { fadeIn, fadeInUp } from '@/utils/animations';
 import classes from './Hero.module.css';
 
 export default function Hero() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLang = (i18n.language || 'en').startsWith('ar') ? 'ar' : 'en';
   const prefersReducedMotion = useReducedMotion();
 
   // If reduced motion is active, set initial to visible to bypass animations
@@ -17,7 +18,7 @@ export default function Hero() {
   return (
     <section id="hero" className={classes.hero}>
       {/* Background Image Layer */}
-      <div className={classes.bgImage} />
+      <div className={classes.bgImage} data-lang={currentLang} />
       
       {/* Gradient Overlay Layer */}
       <div className={classes.bgOverlay} aria-hidden="true" role="presentation" />

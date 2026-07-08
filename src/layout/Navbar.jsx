@@ -60,7 +60,43 @@ export function Navbar() {
         {/* NavLogo */}
         <div className={classes.logo}>
           <a href="#hero" onClick={closeMenu} aria-label={siteMetadata.clientName}>
-            {siteMetadata.clientName}
+            <span className={classes.logoBadge}>Dr.</span>
+            <span className={classes.logoName}>Salah</span>
+            <svg 
+              className={classes.logoPulse} 
+              viewBox="0 0 44 24" 
+              fill="none"
+            >
+              {/* Rounded Rectangle Scanner Frame */}
+              <rect 
+                x="1.5" 
+                y="1.5" 
+                width="41" 
+                height="21" 
+                rx="5" 
+                ry="5" 
+                className={classes.scanRect}
+                strokeWidth="1.5" 
+              />
+              {/* Gliding Scanner Beam */}
+              <line 
+                x1="3.5" 
+                y1="12" 
+                x2="40.5" 
+                y2="12" 
+                className={classes.scanBeam}
+                strokeWidth="2" 
+                strokeLinecap="round"
+              />
+              {/* Flowing Wave (appears when beam is in center) */}
+              <path 
+                d="M 3.5,12 H 12 C 17,5 19,5 22,12 C 25,19 27,19 32,12 H 40.5" 
+                className={classes.pulseFlow}
+                strokeWidth="2.5" 
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </a>
         </div>
 

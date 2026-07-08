@@ -1,6 +1,6 @@
 .experienceSection {
   padding: var(--space-20) 0;
-  background-color: var(--color-surface-alt);
+  background-color: var(--color-gray-bg);
 }
 
 .timeline {

@@ -1,6 +1,6 @@
 .certificatesSection {
   padding: var(--space-20) 0;
-  background-color: var(--color-background);
+  background-color: var(--color-primary);
 }
 
 .grid {
@@ -18,13 +18,15 @@
   padding: 0; /* Override default card padding to make image flush */
   display: flex;
   flex-direction: column;
+  background-color: var(--color-primary-light) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
 .imageWrapper {
   width: 100%;
   aspect-ratio: 4/3;
   overflow: hidden;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .image {
@@ -58,14 +60,14 @@
   font-family: var(--font-heading);
   font-size: var(--text-lg);
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--color-surface);
   margin-bottom: var(--space-1);
 }
 
 .issuer {
   font-family: var(--font-sans);
   font-size: var(--text-base);
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 @media (min-width: 640px) {

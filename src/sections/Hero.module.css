@@ -13,10 +13,17 @@
   inset: 0;
   /* Fallback background color */
   background-color: var(--color-primary);
-  background-image: url('/assets/hero-mobile-bg.webp');
   background-size: 100% 100%;
   background-position: center;
   z-index: 1;
+}
+
+.bgImage[data-lang="ar"] {
+  background-image: url('/assets/hero-mobile-bg-ar.webp');
+}
+
+.bgImage[data-lang="en"] {
+  background-image: url('/assets/hero-mobile-bg-en.webp');
 }
 
 /* Media query moved to the bottom to prevent overriding by default classes */
@@ -34,7 +41,7 @@
   position: absolute;
   inset: 0;
   z-index: 3;
-  background-image: radial-gradient(#ffffff 1.3px, transparent 1.3px);
+  background-image: radial-gradient(#ffffff 1px, transparent 1px);
   background-size: 24px 24px;
   animation: patternMove 8s ease-in-out infinite;
 }
@@ -119,8 +126,13 @@
     padding: var(--space-20) 0;
   }
   .bgImage {
-    background-image: url('/assets/hero-bg.webp');
     background-size: cover;
+  }
+  .bgImage[data-lang="ar"] {
+    background-image: url('/assets/hero-bg-ar.webp');
+  }
+  .bgImage[data-lang="en"] {
+    background-image: url('/assets/hero-bg-en.webp');
   }
   .bgOverlay {
     display: block;
@@ -128,7 +140,7 @@
   }
   .bgPattern {
     display: block;
-    background-image: radial-gradient(#ffffff 1.7px, transparent 1.7px);
+    background-image: radial-gradient(#ffffff 1.3px, transparent 1.3px);
     background-size: 32px 32px;
   }
   .contentContainer {
