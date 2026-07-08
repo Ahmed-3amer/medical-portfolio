@@ -9,34 +9,39 @@ export function useActiveSection(sectionIds) {
   const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
-    const observerOptions = {
-      // Offset accounts for Navbar height; active when top portion is in upper 40% of viewport
-      rootMargin: '-72px 0px -60% 0px',
-      threshold: 0
-    };
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight * 0.35; // Dynamic offset (35% of viewport height)
 
-    const handleIntersect = (entries) => {
-      // Find all intersecting entries
-      const visibleEntries = entries.filter(entry => entry.isIntersecting);
-      
-      if (visibleEntries.length > 0) {
-        // If multiple sections intersect (fast scrolling), pick the one closest to the top
-        const closest = visibleEntries.reduce((prev, curr) => {
-          return (curr.boundingClientRect.top >= 0 && curr.boundingClientRect.top < prev.boundingClientRect.top) ? curr : prev;
-        }, visibleEntries[0]);
-        
-        setActiveSection(closest.target.id);
+      // Check if user is at the bottom of the page
+      const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
+
+      if (isAtBottom) {
+        const lastSection = sectionIds[sectionIds.length - 1];
+        setActiveSection(lastSection);
+        return;
+      }
+
+      let current = '';
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.offsetTop;
+          if (scrollPosition >= top) {
+            current = id;
+          }
+        }
+      }
+
+      if (current) {
+        setActiveSection(current);
       }
     };
 
-    const observer = new IntersectionObserver(handleIntersect, observerOptions);
+    // Run once on load/mount
+    handleScroll();
 
-    sectionIds.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [sectionIds]);
 
   return activeSection;
