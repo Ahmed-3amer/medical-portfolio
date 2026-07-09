@@ -1,8 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'lucide-react';
+import { Phone, Mail } from 'lucide-react';
+import { LinkedinIcon } from '@/components/LinkedinIcon';
+import { WhatsappIcon } from '@/components/WhatsappIcon';
 import { Container } from '@/components/Container';
-import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { siteMetadata } from '@/data/siteMetadata';
 import { contactInfo } from '@/data/contact';
 import classes from './Footer.module.css';
@@ -18,14 +19,6 @@ export function Footer() {
     { id: 'certificates', label: t('nav.certificates') }
   ];
 
-  const renderSocialIcon = (platform) => {
-    switch(platform.toLowerCase()) {
-      case 'linkedin': return <Link size={20} />;
-      // Add other icons here if provided later
-      default: return null;
-    }
-  };
-
   const navLabel = t('footer.nav_label');
 
   return (
@@ -34,7 +27,10 @@ export function Footer() {
         <div className={classes.grid}>
           {/* Column 1: Brand */}
           <div className={classes.brandCol}>
-            <div className={classes.logo}>{siteMetadata.clientName}</div>
+            <div className={classes.logo}>
+              <span className={classes.logoBadge}>Dr.</span>
+              <span className={classes.logoName}>Salah</span>
+            </div>
             <p className={classes.tagline}>{t('footer.tagline')}</p>
           </div>
 
@@ -52,23 +48,57 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Social & Language */}
+          {/* Column 3: Contact & Social Links */}
           <div className={classes.actionsCol}>
+            <h3 className={classes.columnHeader}>{t('footer.social_label')}</h3>
             <div className={classes.socialGroup} aria-label={t('footer.social_label')}>
-              {contactInfo.socialLinks && contactInfo.socialLinks.map((social, index) => (
+              {contactInfo.phone && (
                 <a 
-                  key={index}
-                  href={social.url}
+                  href={contactInfo.phoneHref}
+                  className={classes.socialLink}
+                  aria-label={t('contact.label_phone')}
+                >
+                  <Phone size={24} />
+                </a>
+              )}
+              {contactInfo.email && (
+                <a 
+                  href={contactInfo.emailHref}
+                  className={classes.socialLink}
+                  aria-label={t('contact.label_email')}
+                >
+                  <Mail size={24} />
+                </a>
+              )}
+              {contactInfo.whatsapp && (
+                <a 
+                  href={contactInfo.whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={classes.socialLink}
-                  aria-label={t(social.ariaLabelKey)}
+                  aria-label={t('contact.label_whatsapp')}
                 >
-                  {renderSocialIcon(social.platform)}
+                  <WhatsappIcon size={24} />
                 </a>
-              ))}
+              )}
+              {contactInfo.socialLinks && contactInfo.socialLinks.map((social, index) => {
+                if (social.platform.toLowerCase() === 'linkedin') {
+                  return (
+                    <a 
+                      key={index}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={classes.socialLink}
+                      aria-label={t(social.ariaLabelKey)}
+                    >
+                      <LinkedinIcon size={24} />
+                    </a>
+                  );
+                }
+                return null;
+              })}
             </div>
-            <LanguageSwitcher className={classes.langSwitcher} />
           </div>
         </div>
 

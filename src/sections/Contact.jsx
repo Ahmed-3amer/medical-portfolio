@@ -1,10 +1,12 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Link, MessageCircle } from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
 import { Container } from '@/components/Container';
 import { SectionHeader } from '@/components/SectionHeader';
 import { Card } from '@/components/Card';
+import { LinkedinIcon } from '@/components/LinkedinIcon';
+import { WhatsappIcon } from '@/components/WhatsappIcon';
 import { contactInfo } from '@/data/contact';
 import { fadeInUp, staggerContainerNormal } from '@/utils/animations';
 import classes from './Contact.module.css';
@@ -15,7 +17,7 @@ export default function Contact() {
   // Helper to render social icons (currently only handles LinkedIn)
   const renderSocialIcon = (platform) => {
     switch(platform.toLowerCase()) {
-      case 'linkedin': return <Link size={24} />;
+      case 'linkedin': return <LinkedinIcon size={24} />;
       default: return null;
     }
   };
@@ -92,7 +94,7 @@ export default function Contact() {
                 <Card variant="flat" hoverable className={classes.contactCard}>
                   <a href={contactInfo.whatsappHref} target="_blank" rel="noopener noreferrer" className={classes.cardLink}>
                     <div className={classes.iconWrapper}>
-                      <MessageCircle size={24} />
+                      <WhatsappIcon size={24} />
                     </div>
                     <div className={classes.cardContent}>
                       <span className={classes.cardLabel}>{t('contact.label_whatsapp')}</span>
