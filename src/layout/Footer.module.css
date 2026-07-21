@@ -23,19 +23,21 @@
   font-family: 'Outfit', 'Inter', sans-serif;
   font-size: var(--text-2xl);
   letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
 .logoBadge {
-  font-size: var(--text-xs);
+  font-size: var(--text-sm);
   font-weight: 700;
   text-transform: uppercase;
   background-color: rgba(255, 255, 255, 0.1);
   color: var(--color-surface);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 2px 8px;
+  padding: 4px 10px;
   border-radius: var(--radius-full);
   margin-inline-end: var(--space-2);
   line-height: 1;
+  white-space: nowrap;
 }
 
 .logoName {
@@ -44,6 +46,7 @@
   font-style: italic;
   font-size: 1.25em;
   color: var(--color-surface);
+  white-space: nowrap;
 }
 
 .tagline {

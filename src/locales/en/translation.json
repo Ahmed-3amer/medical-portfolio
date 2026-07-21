@@ -1,10 +1,67 @@
 {
   "nav": {
     "about": "About",
+    "job_description": "Responsibilities",
     "expertise": "Expertise",
     "experience": "Experience",
     "certificates": "Certificates",
     "cta": "Contact Me"
+  },
+  "job_description": {
+    "title": "Role & Key Responsibilities",
+    "subtitle": "Radiologic Technology Specialist | Diagnostic & Interventional Medical Imaging Specialist | Radiation Protection Officer (RPO)",
+    "summary_title": "Role Summary",
+    "summary_text": "A highly experienced Radiologic Technology Specialist with expertise in diagnostic and interventional medical imaging, radiation protection, and quality management. Responsible for performing and optimizing advanced imaging procedures while ensuring compliance with radiation safety regulations, minimizing radiation risks, and maintaining the highest standards of patient and occupational safety.",
+    "categories": {
+      "imaging": {
+        "title": "Diagnostic & Interventional Medical Imaging",
+        "subtitle": "Clinical Procedures & Imaging Modalities",
+        "modalities_title": "Operated Advanced Imaging Modalities:",
+        "items": [
+          "Perform and supervise a wide range of diagnostic and interventional imaging procedures according to clinical protocols and international standards.",
+          "Assist radiologists and medical teams during interventional procedures by providing accurate imaging guidance.",
+          "Optimize imaging protocols to achieve high-quality diagnostic images with appropriate radiation dose management.",
+          "Ensure patient preparation, positioning, safety, and comfort throughout imaging procedures.",
+          "Maintain accurate clinical documentation and imaging records."
+        ],
+        "modalities": [
+          "Digital X-ray",
+          "CT Scan",
+          "MRI",
+          "Fluoroscopy & C-Arm",
+          "Angiography",
+          "Mammography",
+          "Dental Imaging",
+          "PET/CT"
+        ]
+      },
+      "radiation": {
+        "title": "Radiation Protection & Regulatory Responsibilities",
+        "subtitle": "RPO Compliance & Nuclear Safety",
+        "items": [
+          "Act as Radiation Protection Officer (RPO) responsible for implementing radiation safety programs and ensuring compliance with national and international radiation protection standards.",
+          "Develop and monitor radiation protection policies according to ALARA principles (As Low As Reasonably Achievable).",
+          "Conduct radiation risk assessments and support the implementation of corrective and preventive actions.",
+          "Monitor occupational and patient radiation exposure and recommend dose optimization strategies.",
+          "Ensure proper use, maintenance, and calibration of radiation monitoring devices and personal dosimeters.",
+          "Perform radiation safety inspections and verify compliance with radiation protection requirements.",
+          "Ensure safe operation of X-ray generating equipment and radioactive imaging systems.",
+          "Participate in licensing, regulatory compliance, and communication with radiation control authorities.",
+          "Provide radiation safety training and awareness programs for healthcare staff.",
+          "Investigate radiation incidents and implement measures to prevent recurrence."
+        ]
+      },
+      "qa": {
+        "title": "Quality Assurance & Clinical Excellence",
+        "subtitle": "Quality Management & Multidisciplinary Care",
+        "items": [
+          "Implement Quality Assurance (QA) programs for medical imaging equipment and clinical workflows.",
+          "Monitor image quality, equipment performance, and protocol optimization.",
+          "Support continuous improvement initiatives to enhance safety, efficiency, and patient care.",
+          "Collaborate with radiologists, medical physicists, engineers, and multidisciplinary healthcare teams."
+        ]
+      }
+    }
   },
   "hero": {
     "eyebrow": "Interventional Cardiology Expert",
@@ -14,52 +71,43 @@
   },
   "about": {
     "title": "About Me",
-    "subtitle": "Professional Background",
-    "biography": "Placeholder biography text...",
-    "mission_label": "My Mission",
-    "mission": "Placeholder mission text...",
-    "values_label": "Core Values",
-    "value_01": "Professionalism",
-    "value_02": "Trust",
-    "value_03": "Precision",
-    "value_04": "Care",
-    "value_05": "Simplicity",
-    "value_06": "Confidence"
+    "subtitle": "Radiologic Technology Specialist | Diagnostic & Interventional Medical Imaging | Licensed Radiation Protection Officer",
+    "biography": "I am a Radiologic Technology Specialist with a Bachelor’s Degree in Diagnostic and Interventional Radiologic Technology and extensive experience in medical imaging and healthcare.",
+    "mission_title": "My Mission & Professional Profile",
+    "mission_p1": "As a Radiologic Technology Specialist specializing in Diagnostic & Interventional Medical Imaging and Licensed Radiation Protection Officer, my mission is to advance healthcare by delivering excellence in diagnostic and interventional imaging while ensuring the highest standards of radiation protection and nuclear safety.",
+    "mission_p2": "I am committed to promoting patient safety, supporting healthcare professionals, and contributing to the safe and effective use of ionizing radiation through professional practice, continuous learning, quality improvement, and compliance with international standards.",
+    "mission_p3": "With expertise in advanced medical imaging technologies and image-guided procedures, I strive to optimize diagnostic accuracy, enhance clinical workflows, and support the delivery of safe, efficient, and patient-centered healthcare services.",
+    "mission_tagline": "Radiologic Technology Specialist | Diagnostic & Interventional Medical Imaging | Licensed Radiation Protection Officer",
+    "values_title": "Core Values",
+    "values": {
+      "patient_safety": "Patient Safety",
+      "radiation_protection": "Radiation Protection",
+      "excellence": "Professional Excellence",
+      "integrity": "Integrity",
+      "learning": "Continuous Learning",
+      "collaboration": "Collaboration",
+      "innovation": "Innovation",
+      "quality": "Commitment to Quality"
+    }
   },
   "expertise": {
     "title": "Areas of Expertise",
-    "subtitle": "Specialized Medical Fields",
-    "interventional-cardiology": {
-      "title": "Interventional Cardiology",
-      "description": "Placeholder description"
-    },
-    "interventional-radiology": {
-      "title": "Interventional Radiology",
-      "description": "Placeholder description"
-    },
-    "neurointerventional": {
-      "title": "Neurointerventional",
-      "description": "Placeholder description"
-    },
-    "diagnostic-imaging": {
-      "title": "Diagnostic Imaging",
-      "description": "Placeholder description"
-    },
-    "image-guided-treatment": {
-      "title": "Image-Guided Treatment",
-      "description": "Placeholder description"
-    },
-    "medical-devices-trade": {
-      "title": "Medical Devices Trade",
-      "description": "Placeholder description"
-    },
-    "medical-equipment": {
-      "title": "Medical Equipment",
-      "description": "Placeholder description"
-    },
-    "cosmetic-equipment": {
-      "title": "Cosmetic Equipment",
-      "description": "Placeholder description"
+    "subtitle": "Advanced Medical Imaging, Interventional Procedures & Radiation Safety Competencies",
+    "items": {
+      "diagnostic_imaging": "Diagnostic Medical Imaging",
+      "interventional_radiology": "Interventional Radiologic Technology",
+      "radiologic_technology": "Radiologic Technology",
+      "radiation_protection": "Radiation Protection & Nuclear Safety",
+      "radiation_compliance": "Radiation Safety Compliance",
+      "imaging_equipment": "Medical Imaging Equipment",
+      "xray_ct_systems": "X-ray, CT, Fluoroscopy & C-Arm Systems",
+      "qa_imaging": "Quality Assurance (QA) in Medical Imaging",
+      "dose_optimization": "Radiation Dose Optimization",
+      "healthcare_tech": "Healthcare Technology",
+      "device_solutions": "Medical Device Solutions",
+      "workflow_optimization": "Clinical Workflow Optimization",
+      "equipment_procurement": "Medical Equipment Procurement",
+      "technical_training": "Technical Training & Clinical Support"
     }
   },
   "experience": {

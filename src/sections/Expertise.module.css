@@ -1,67 +1,110 @@
 .expertiseSection {
   padding: var(--space-20) 0;
-  background-color: var(--color-primary);
+  background-color: var(--color-gray-bg);
+  position: relative;
+}
+
+.header {
+  margin-bottom: var(--space-12);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-6);
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--space-4);
 }
 
-.expertiseCard {
+.cardWrapper {
+  height: 100%;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5) var(--space-6);
   height: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: start;
-  background-color: var(--color-primary-light) !important;
-  border-color: rgba(255, 255, 255, 0.08) !important;
+  align-items: center;
+  gap: var(--space-4);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--color-accent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(14, 165, 233, 0.3);
+}
+
+.card:hover::before {
+  opacity: 1;
 }
 
 .iconWrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  background: rgba(14, 165, 233, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
-  background-color: rgba(14, 165, 233, 0.15);
-  color: var(--color-accent);
-  border-radius: var(--radius-md);
-  margin-bottom: var(--space-5);
-  transition: all 0.3s ease;
+  flex-shrink: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* On hover, flip colors */
-.expertiseCard:hover .iconWrapper {
-  background-color: var(--color-accent);
+.card:hover .iconWrapper {
+  background: var(--color-accent);
+}
+
+.icon {
+  color: var(--color-accent);
+  transition: color 0.3s ease;
+}
+
+.card:hover .icon {
   color: var(--color-surface);
-  transform: scale(1.05);
 }
 
 .cardTitle {
   font-family: var(--font-heading);
-  font-size: var(--text-xl);
-  font-weight: 700;
-  color: var(--color-surface);
-  margin-bottom: var(--space-2);
-}
-
-.cardDesc {
-  color: rgba(255, 255, 255, 0.7);
   font-size: var(--text-base);
-  line-height: 1.6;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 0;
+  line-height: 1.4;
 }
 
+/* Responsive Media Queries */
 @media (min-width: 640px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5);
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
   .grid {
     grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-8);
   }
 }

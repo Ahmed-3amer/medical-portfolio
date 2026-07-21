@@ -14,6 +14,7 @@ export function Footer() {
 
   const navLinks = [
     { id: 'about', label: t('nav.about') },
+    { id: 'job-description', label: t('nav.job_description') },
     { id: 'expertise', label: t('nav.expertise') },
     { id: 'experience', label: t('nav.experience') },
     { id: 'certificates', label: t('nav.certificates') }
@@ -28,8 +29,8 @@ export function Footer() {
           {/* Column 1: Brand */}
           <div className={classes.brandCol}>
             <div className={classes.logo}>
-              <span className={classes.logoBadge}>Dr.</span>
-              <span className={classes.logoName}>Salah</span>
+              <span className={classes.logoBadge}>B.Sc. RT</span>
+              <span className={classes.logoName}>Salah Nagah</span>
             </div>
             <p className={classes.tagline}>{t('footer.tagline')}</p>
           </div>

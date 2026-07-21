@@ -2,32 +2,42 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { 
-  Activity, 
   Scan, 
-  Brain, 
-  Monitor, 
   Crosshair, 
-  Briefcase, 
+  Activity, 
+  ShieldAlert, 
+  FileCheck, 
+  Cpu, 
+  Layers, 
+  CheckCircle2, 
+  Sliders, 
   Stethoscope, 
-  Sparkles 
+  Box, 
+  TrendingUp, 
+  PackageCheck, 
+  GraduationCap 
 } from 'lucide-react';
 import { Container } from '@/components/Container';
 import { SectionHeader } from '@/components/SectionHeader';
-import { Card } from '@/components/Card';
 import { expertiseItems } from '@/data/expertise';
 import { fadeInUp, staggerContainerFast } from '@/utils/animations';
 import classes from './Expertise.module.css';
 
-// Map icon string names to imported Lucide components to ensure tree-shaking
 const iconMap = {
-  activity: Activity,
-  scan: Scan,
-  brain: Brain,
-  monitor: Monitor,
-  crosshair: Crosshair,
-  briefcase: Briefcase,
-  stethoscope: Stethoscope,
-  sparkles: Sparkles
+  Scan,
+  Crosshair,
+  Activity,
+  ShieldAlert,
+  FileCheck,
+  Cpu,
+  Layers,
+  CheckCircle2,
+  Sliders,
+  Stethoscope,
+  Box,
+  TrendingUp,
+  PackageCheck,
+  GraduationCap
 };
 
 export default function Expertise() {
@@ -39,7 +49,8 @@ export default function Expertise() {
         <SectionHeader 
           titleKey="expertise.title" 
           subtitleKey="expertise.subtitle" 
-          theme="dark"
+          alignment="center"
+          className={classes.header}
         />
 
         <motion.div 
@@ -50,21 +61,18 @@ export default function Expertise() {
           variants={staggerContainerFast}
         >
           {expertiseItems.map((item) => {
-            const IconComponent = iconMap[item.iconName] || Activity;
+            const IconComponent = iconMap[item.icon] || Activity;
             
             return (
-              <motion.div key={item.id} variants={fadeInUp}>
-                <Card hoverable className={classes.expertiseCard}>
+              <motion.div key={item.id} variants={fadeInUp} className={classes.cardWrapper}>
+                <div className={classes.card}>
                   <div className={classes.iconWrapper}>
-                    <IconComponent size={28} />
+                    <IconComponent size={24} className={classes.icon} />
                   </div>
                   <h3 className={classes.cardTitle}>
-                    {t(`expertise.${item.id}.title`)}
+                    {t(`expertise.items.${item.id}`)}
                   </h3>
-                  <p className={classes.cardDesc}>
-                    {t(`expertise.${item.id}.description`)}
-                  </p>
-                </Card>
+                </div>
               </motion.div>
             );
           })}

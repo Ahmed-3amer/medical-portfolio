@@ -11,7 +11,7 @@ import { siteMetadata } from '@/data/siteMetadata';
 import classes from './Navbar.module.css';
 
 // IDs of sections to track for active link highlighting
-const SECTION_IDS = ['hero', 'about', 'expertise', 'experience', 'certificates', 'contact'];
+const SECTION_IDS = ['hero', 'about', 'job-description', 'expertise', 'experience', 'certificates', 'contact'];
 
 export function Navbar() {
   const { t } = useTranslation();
@@ -48,6 +48,7 @@ export function Navbar() {
 
   const navLinks = [
     { id: 'about', label: t('nav.about') },
+    { id: 'job-description', label: t('nav.job_description') },
     { id: 'expertise', label: t('nav.expertise') },
     { id: 'experience', label: t('nav.experience') },
     { id: 'certificates', label: t('nav.certificates') }
@@ -60,8 +61,8 @@ export function Navbar() {
         {/* NavLogo */}
         <div className={classes.logo}>
           <a href="#hero" onClick={closeMenu} aria-label={siteMetadata.clientName}>
-            <span className={classes.logoBadge}>Dr.</span>
-            <span className={classes.logoName}>Salah</span>
+            <span className={classes.logoBadge}>B.Sc. RT</span>
+            <span className={classes.logoName}>Salah Nagah</span>
             <svg 
               className={classes.logoPulse} 
               viewBox="0 0 44 24" 

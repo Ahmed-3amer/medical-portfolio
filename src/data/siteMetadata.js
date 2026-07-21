@@ -1,8 +1,8 @@
 export const siteMetadata = {
-  clientName: "Dr. Salah",
-  title: "Dr. Salah - Medical Portfolio",
-  description: "Placeholder description for Dr. Salah's medical portfolio.",
-  keywords: "healthcare, medical, doctor, portfolio",
+  clientName: "Salah Nagah",
+  title: "Salah Nagah - Medical & Radiology Specialist Portfolio",
+  description: "Portfolio of Salah Nagah, Radiologic Technologist (B.Sc. RT).",
+  keywords: "radiology, radiologic technologist, medical equipment, portfolio, Salah Nagah",
   siteUrl: "https://example.com",
-  copyrightName: "Dr. Salah"
+  copyrightName: "Salah Nagah"
 };

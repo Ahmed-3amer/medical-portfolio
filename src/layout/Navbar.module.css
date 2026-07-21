@@ -31,20 +31,24 @@
   font-size: var(--text-2xl);
   letter-spacing: -0.02em;
   text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .logoBadge {
-  font-size: var(--text-xs);
+  font-size: var(--text-sm);
   font-weight: 700;
   text-transform: uppercase;
   background-color: rgba(14, 165, 233, 0.1);
   color: var(--color-accent);
   border: 1px solid rgba(14, 165, 233, 0.25);
-  padding: 2px 8px;
+  padding: 4px 10px;
   border-radius: var(--radius-full);
   margin-inline-end: var(--space-2);
   transition: all 0.3s ease;
   line-height: 1;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .logoName {
@@ -54,6 +58,7 @@
   font-size: 1.25em;
   color: var(--color-primary);
   transition: color 0.3s ease;
+  white-space: nowrap;
 }
 
 .logoPulse {
@@ -63,6 +68,7 @@
   display: inline-block;
   vertical-align: middle;
   position: relative;
+  flex-shrink: 0;
 }
 
 .scanRect {
@@ -331,6 +337,49 @@
   padding: var(--space-3);
   border-radius: var(--radius-md);
   font-weight: 600;
+}
+
+/* Mobile Responsive Adjustments for Logo and Navbar */
+@media (max-width: 640px) {
+  .navContainer {
+    padding-inline: var(--space-3);
+  }
+  .logo a {
+    font-size: var(--text-lg);
+  }
+  .logoBadge {
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    margin-inline-end: 4px;
+  }
+  .logoName {
+    font-size: 1.15em;
+  }
+  .logoPulse {
+    width: 32px;
+    height: 18px;
+    margin-inline-start: 4px;
+  }
+  .actions {
+    gap: var(--space-2);
+  }
+}
+
+@media (max-width: 380px) {
+  .logo a {
+    font-size: var(--text-base);
+  }
+  .logoBadge {
+    font-size: 0.6rem;
+    padding: 1px 4px;
+    margin-inline-end: 3px;
+  }
+  .logoName {
+    font-size: 1.1em;
+  }
+  .logoPulse {
+    display: none; /* Hide pulse icon on extremely narrow phones to guarantee zero overflow */
+  }
 }
 
 /* Desktop Media Query */
