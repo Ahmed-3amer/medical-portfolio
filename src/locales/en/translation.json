@@ -61,6 +61,29 @@
           "Collaborate with radiologists, medical physicists, engineers, and multidisciplinary healthcare teams."
         ]
       }
+    },
+    "showcase": {
+      "title": "Clinical Practice Highlights",
+      "subtitle": "Real Imaging & Interventional Procedures Handled in Professional Practice",
+      "click_hint": "Click image to view high-resolution case details",
+      "cases": {
+        "case_01": {
+          "title": "3D CT Angiography Reconstruction",
+          "category": "CT Scan & Vascular Imaging"
+        },
+        "case_02": {
+          "title": "Interventional C-Arm Guidance",
+          "category": "Interventional Radiology"
+        },
+        "case_03": {
+          "title": "High-Resolution MRI Diagnostic Brain Scan",
+          "category": "MRI & Neuroimaging"
+        },
+        "case_04": {
+          "title": "Digital Radiography & Orthopedic Assessment",
+          "category": "Digital X-Ray & Radiography"
+        }
+      }
     }
   },
   "hero": {
@@ -112,7 +135,74 @@
   },
   "experience": {
     "title": "Professional Experience",
-    "subtitle": "Career Journey"
+    "subtitle": "Professional Certifications, Radiation Safety Training & Advanced Medical Imaging Education",
+    "responsibilities_label": "Key Responsibilities:",
+    "items": {
+      "exp_01": {
+        "title": "Radiation Protection Officer (RPO)",
+        "institution": "Egyptian Atomic Energy Authority (EAEA) – Egypt",
+        "period": "2025 – 2026",
+        "responsibilities": [
+          "Implemented radiation protection principles and safety procedures in accordance with national and international standards.",
+          "Monitored radiation safety practices and ensured compliance with regulations for the safe use of ionizing radiation.",
+          "Supported radiation risk assessment, dose monitoring, and occupational radiation safety programs.",
+          "Participated in quality assurance activities and safety inspections related to radiation protection.",
+          "Promoted awareness and training on radiation safety practices among healthcare professionals.",
+          "Ensured adherence to ALARA principles to minimize unnecessary radiation exposure."
+        ]
+      },
+      "exp_02": {
+        "title": "Radiology Center Manager | Radiation Protection Officer | Quality Manager",
+        "institution": "Al-Hayat Center for Diagnostic & Interventional Radiology – Karbala, Iraq",
+        "period": "2022 – 2025",
+        "responsibilities": [
+          "Managed all clinical and operational activities of the Diagnostic & Interventional Radiology Center.",
+          "Supervised MRI, CT, X-ray, Ultrasound, Fluoroscopy, and Interventional Radiology services.",
+          "Directed radiation protection and ensured compliance with international radiation safety standards.",
+          "Led quality assurance programs and continuous quality improvement initiatives.",
+          "Managed multidisciplinary teams and optimized workflow, operational efficiency, and patient care.",
+          "Supported equipment performance, staff training, and implementation of best clinical practices."
+        ]
+      },
+      "exp_03": {
+        "title": "Radiology Department Manager | Radiation Protection Officer | Quality Manager",
+        "institution": "Warith International Hospital for Oncology – Karbala, Iraq",
+        "period": "2020 – 2022",
+        "responsibilities": [
+          "Managed daily operations of the Radiology Department.",
+          "Led radiology staff and coordinated imaging services for oncology patients.",
+          "Served as Radiation Protection Officer (RPO), ensuring compliance with radiation safety regulations.",
+          "Managed the Quality Management System (QMS) within the radiology department.",
+          "Implemented quality improvement initiatives and optimized clinical workflows.",
+          "Supervised diagnostic imaging services while maintaining patient safety and regulatory compliance."
+        ]
+      },
+      "exp_04": {
+        "title": "Radiologic Technology Specialist",
+        "institution": "Nile Scan Radiology Center – New Cairo (Fifth Settlement), Egypt",
+        "period": "2017 – 2020",
+        "responsibilities": [
+          "Performed and supervised diagnostic imaging across multiple modalities.",
+          "Responsible for MRI, CT, PET/CT, Digital X-ray, Mammography, Dental Imaging, and Angiography services.",
+          "Ensured radiation protection compliance and optimized imaging protocols.",
+          "Maintained quality assurance (QA) standards and equipment performance.",
+          "Collaborated with radiologists and multidisciplinary teams to provide accurate diagnostic services."
+        ]
+      },
+      "exp_05": {
+        "title": "Radiologic Technologist",
+        "institution": "Tanta University Hospitals (Emergency Hospital & International Educational French Hospital)",
+        "period": "2014 – 2017",
+        "responsibilities": [
+          "Performed diagnostic radiographic examinations in emergency, inpatient, and outpatient settings.",
+          "Worked in both the Emergency Hospital and the International Educational French Hospital of Tanta University Hospitals.",
+          "Assisted physicians in emergency and specialized imaging procedures.",
+          "Applied radiation protection principles and ensured patient safety according to international standards.",
+          "Operated diagnostic imaging equipment while maintaining high image quality and workflow efficiency.",
+          "Completed clinical application training (Application Specialist) on Siemens Healthineers medical imaging systems."
+        ]
+      }
+    }
   },
   "certificates": {
     "title": "Certificates & Memberships",

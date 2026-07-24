@@ -17,7 +17,6 @@ export default function Certificates() {
         <SectionHeader 
           titleKey="certificates.title" 
           subtitleKey="certificates.subtitle" 
-          theme="dark"
         />
 
         <motion.div 

@@ -28,7 +28,7 @@ export default function Contact() {
         <SectionHeader 
           titleKey="contact.title" 
           subtitleKey="contact.subtitle"
-          theme="light"
+          theme="dark"
         />
 
         <div className={classes.layout}>
