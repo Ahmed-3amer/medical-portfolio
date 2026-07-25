@@ -1,12 +1,17 @@
 .certificatesSection {
   padding: var(--space-20) 0;
   background-color: var(--color-gray-bg);
+  position: relative;
+}
+
+.header {
+  margin-bottom: var(--space-12);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-8);
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--space-6);
 }
 
 .cardWrapper {
@@ -15,70 +20,296 @@
 
 .certCard {
   width: 100%;
-  padding: 0; /* Override default card padding to make image flush */
+  padding: 8px 8px var(--space-5) 8px;
   display: flex;
   flex-direction: column;
-  background-color: var(--color-surface) !important;
-  border-color: var(--color-border) !important;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .certCard:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
+  border-color: var(--color-accent);
 }
 
 .imageWrapper {
+  position: relative;
   width: 100%;
-  aspect-ratio: 4/3;
+  aspect-ratio: 16/10;
   overflow: hidden;
-  border-bottom: 1px solid var(--color-border);
+  background: var(--color-gray-bg);
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
 }
 
 .image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  border-radius: 12px;
+  transition: transform 0.4s ease;
 }
 
 .certCard:hover .image {
-  transform: scale(1.03);
+  transform: scale(1.04);
+}
+
+.placeholderBox {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.06), rgba(15, 23, 42, 0.04));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  color: var(--color-accent);
+}
+
+.placeholderIcon {
+  color: var(--color-accent);
+}
+
+.placeholderText {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.certCard:hover .cardOverlay {
+  opacity: 1;
+}
+
+.zoomBadge {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .content {
-  padding: var(--space-5);
+  padding: var(--space-4) var(--space-2) 0 var(--space-2);
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  gap: var(--space-2);
 }
 
-.year {
-  display: inline-block;
-  font-family: var(--font-sans);
-  font-size: var(--text-sm);
-  font-weight: 600;
+.metaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.yearBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: 700;
   color: var(--color-accent);
-  margin-bottom: var(--space-2);
+  background: rgba(14, 165, 233, 0.08);
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+}
+
+.metaIcon {
+  color: var(--color-accent);
 }
 
 .title {
   font-family: var(--font-heading);
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   font-weight: 700;
   color: var(--color-primary);
-  margin-bottom: var(--space-1);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.issuerRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-secondary);
+}
+
+.issuerIcon {
+  color: var(--color-accent);
+  flex-shrink: 0;
 }
 
 .issuer {
   font-family: var(--font-sans);
-  font-size: var(--text-base);
-  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-secondary);
 }
 
+/* Lightbox Modal */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(11, 19, 43, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+}
+
+.modalContent {
+  position: relative;
+  max-width: 850px;
+  width: 100%;
+  background: #0F172A;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}
+
+.modalCloseBtn {
+  position: absolute;
+  top: var(--space-4);
+  inset-inline-end: var(--space-4);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modalCloseBtn:hover {
+  background: var(--color-accent);
+  color: var(--color-surface);
+  transform: scale(1.05);
+}
+
+.modalImageWrapper {
+  width: 100%;
+  max-height: 520px;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalImage {
+  max-width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+}
+
+.modalPlaceholderBox {
+  width: 100%;
+  padding: var(--space-12) var(--space-6);
+  background: linear-gradient(135deg, #0F172A, #1E293B);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  text-align: center;
+}
+
+.modalPlaceholderIcon {
+  color: var(--color-accent);
+}
+
+.modalPlaceholderTitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.modalPlaceholderSub {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.modalFooter {
+  padding: var(--space-5) var(--space-6);
+  background: #0F172A;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modalMetaRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+.modalYearBadge {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--color-accent);
+  background: rgba(14, 165, 233, 0.15);
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+}
+
+.modalIssuer {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.modalTitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 var(--space-2) 0;
+}
+
+.modalDescription {
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+/* Responsive Media Queries */
 @media (min-width: 640px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);

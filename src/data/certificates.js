@@ -1,23 +1,14 @@
 export const certificateItems = [
   {
-    id: "cert-01",
-    image: "https://placehold.co/800x600/0F172A/FFFFFF?text=Certificate+1",
-    titleKey: "Board Certification in Cardiology",
-    issuerKey: "Egyptian Fellowship Board",
-    year: "2018"
+    id: "cert_01",
+    image: "/assets/certificates/cert-01.png"
   },
   {
-    id: "cert-02",
-    image: "https://placehold.co/800x600/0F172A/FFFFFF?text=Certificate+2",
-    titleKey: "Advanced Interventional Training",
-    issuerKey: "European Society of Cardiology",
-    year: "2020"
+    id: "cert_02",
+    image: "/assets/certificates/cert-02.png"
   },
   {
-    id: "cert-03",
-    image: "https://placehold.co/800x600/0F172A/FFFFFF?text=Certificate+3",
-    titleKey: "Membership",
-    issuerKey: "American College of Cardiology",
-    year: "2022"
+    id: "cert_03",
+    image: "/assets/certificates/cert-03.png"
   }
 ];

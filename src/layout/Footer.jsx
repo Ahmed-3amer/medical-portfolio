@@ -22,6 +22,9 @@ export function Footer() {
 
   const navLabel = t('footer.nav_label');
 
+  const phoneHref = contactInfo.phones?.[0]?.href || '#contact';
+  const whatsappHref = contactInfo.whatsapp?.[0]?.href || '#contact';
+
   return (
     <footer className={classes.footer}>
       <Container>
@@ -53,16 +56,17 @@ export function Footer() {
           <div className={classes.actionsCol}>
             <h3 className={classes.columnHeader}>{t('footer.social_label')}</h3>
             <div className={classes.socialGroup} aria-label={t('footer.social_label')}>
-              {contactInfo.phone && (
-                <a 
-                  href={contactInfo.phoneHref}
-                  className={classes.socialLink}
-                  aria-label={t('contact.label_phone')}
-                >
-                  <Phone size={24} />
-                </a>
-              )}
-              {contactInfo.email && (
+              {/* Phone */}
+              <a 
+                href={phoneHref}
+                className={classes.socialLink}
+                aria-label={t('contact.label_phone')}
+              >
+                <Phone size={24} />
+              </a>
+
+              {/* Email */}
+              {contactInfo.emailHref && (
                 <a 
                   href={contactInfo.emailHref}
                   className={classes.socialLink}
@@ -71,34 +75,30 @@ export function Footer() {
                   <Mail size={24} />
                 </a>
               )}
-              {contactInfo.whatsapp && (
+
+              {/* WhatsApp */}
+              <a 
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={classes.socialLink}
+                aria-label={t('contact.label_whatsapp')}
+              >
+                <WhatsappIcon size={24} />
+              </a>
+
+              {/* LinkedIn */}
+              {contactInfo.linkedin && (
                 <a 
-                  href={contactInfo.whatsappHref}
+                  href={contactInfo.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={classes.socialLink}
-                  aria-label={t('contact.label_whatsapp')}
+                  aria-label={t('contact.label_linkedin')}
                 >
-                  <WhatsappIcon size={24} />
+                  <LinkedinIcon size={24} />
                 </a>
               )}
-              {contactInfo.socialLinks && contactInfo.socialLinks.map((social, index) => {
-                if (social.platform.toLowerCase() === 'linkedin') {
-                  return (
-                    <a 
-                      key={index}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={classes.socialLink}
-                      aria-label={t(social.ariaLabelKey)}
-                    >
-                      <LinkedinIcon size={24} />
-                    </a>
-                  );
-                }
-                return null;
-              })}
             </div>
           </div>
         </div>

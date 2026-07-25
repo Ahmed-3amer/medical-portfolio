@@ -205,22 +205,42 @@
     }
   },
   "certificates": {
-    "title": "Certificates & Memberships",
-    "subtitle": "Professional Recognition"
+    "title": "Certificates & Accreditations",
+    "subtitle": "Professional Recognitions, Radiation Safety Licenses & Specialized Training",
+    "click_hint": "Click card to view high-resolution certificate",
+    "placeholder_badge": "Official Accreditation",
+    "items": {
+      "cert_01": {
+        "title": "Licensed Radiation Protection Officer (RPO)",
+        "issuer": "Egyptian Atomic Energy Authority (EAEA)",
+        "year": "2025 – 2026"
+      },
+      "cert_02": {
+        "title": "Bachelor of Diagnostic & Interventional Radiologic Technology",
+        "issuer": "Faculty of Allied Medical Sciences",
+        "year": "2014"
+      },
+      "cert_03": {
+        "title": "Siemens Healthineers Application Specialist Certification",
+        "issuer": "Siemens Healthineers Academy",
+        "year": "2017"
+      }
+    }
   },
   "contact": {
-    "title": "Contact",
-    "subtitle": "Get in touch",
-    "invitation_text": "Feel free to reach out...",
-    "label_phone": "Phone",
-    "label_email": "Email",
-    "label_linkedin": "LinkedIn",
-    "label_location": "Location",
-    "label_whatsapp": "WhatsApp",
-    "location": "Cairo, Egypt"
+    "title": "Contact & Professional Inquiries",
+    "subtitle": "Get in touch for clinical consultations, radiation safety management, and professional collaborations.",
+    "label_phone": "Phone & Direct Calls",
+    "label_whatsapp": "WhatsApp Direct",
+    "label_email": "Official Email",
+    "label_linkedin": "LinkedIn Profile",
+    "countries": {
+      "egypt": "Egypt",
+      "iraq": "Iraq"
+    }
   },
   "footer": {
-    "tagline": "Advanced Medical Solutions",
+    "tagline": "Radiologic Technology Specialist | Diagnostic & Interventional Medical Imaging | Licensed Radiation Protection Officer",
     "nav_label": "Quick Links",
     "copyright": "All rights reserved.",
     "social_label": "Social Media Links"
