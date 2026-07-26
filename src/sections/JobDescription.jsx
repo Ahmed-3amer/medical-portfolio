@@ -12,18 +12,25 @@ import {
   Radio,
   Maximize2,
   X,
-  Sparkles
+  Sparkles,
+  ChevronLeft,
+  ChevronRight,
+  Images,
+  Layers3
 } from 'lucide-react';
 import { Container } from '@/components/Container';
 import { SectionHeader } from '@/components/SectionHeader';
-import { clinicalCases } from '@/data/clinicalCases';
+import { clinicalCases, clinicalCategories } from '@/data/clinicalCases';
 import { fadeInUp, staggerContainerNormal } from '@/utils/animations';
 import classes from './JobDescription.module.css';
 
 export default function JobDescription() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [activeCategory, setActiveCategory] = useState('all');
   const [selectedCase, setSelectedCase] = useState(null);
-  const [isPaused, setIsPaused] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const isRtl = i18n.language === 'ar';
 
   // Retrieve raw arrays safely from translation
   const imagingItems = t('job_description.categories.imaging.items', { returnObjects: true }) || [];
@@ -31,14 +38,38 @@ export default function JobDescription() {
   const radiationItems = t('job_description.categories.radiation.items', { returnObjects: true }) || [];
   const qaItems = t('job_description.categories.qa.items', { returnObjects: true }) || [];
 
-  // Double the cases list for seamless infinite marquee loop
-  const marqueeCases = [...clinicalCases, ...clinicalCases, ...clinicalCases];
+  // Filter clinical cases according to active category
+  const filteredCases = activeCategory === 'all' 
+    ? clinicalCases 
+    : clinicalCases.filter(c => c.category === activeCategory);
 
-  // Handle ESC key and scroll lock for Modal
+  const handleOpenCase = (item) => {
+    setSelectedCase(item);
+    setCurrentImageIndex(0);
+  };
+
+  const handleNextImage = () => {
+    if (!selectedCase) return;
+    setCurrentImageIndex((prev) => (prev + 1) % selectedCase.images.length);
+  };
+
+  const handlePrevImage = () => {
+    if (!selectedCase) return;
+    setCurrentImageIndex((prev) => (prev - 1 + selectedCase.images.length) % selectedCase.images.length);
+  };
+
+  // Handle ESC key and Keyboard Arrow navigation for Modal
   useEffect(() => {
     const handleKeyDown = (e) => {
+      if (!selectedCase) return;
       if (e.key === 'Escape') {
         setSelectedCase(null);
+      } else if (e.key === 'ArrowRight') {
+        if (isRtl) handlePrevImage();
+        else handleNextImage();
+      } else if (e.key === 'ArrowLeft') {
+        if (isRtl) handleNextImage();
+        else handlePrevImage();
       }
     };
 
@@ -53,7 +84,7 @@ export default function JobDescription() {
       document.body.style.overflow = 'unset';
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [selectedCase]);
+  }, [selectedCase, isRtl]);
 
   return (
     <section id="job-description" className={classes.section}>
@@ -186,7 +217,7 @@ export default function JobDescription() {
           </motion.div>
         </motion.div>
 
-        {/* Clinical Practice Showcase Carousel (Real Case Gallery) */}
+        {/* Clinical Practice Showcase (Categorized Album Cards & Interactive Lightbox) */}
         <motion.div 
           className={classes.showcaseSection}
           initial="hidden"
@@ -204,52 +235,78 @@ export default function JobDescription() {
             </p>
           </div>
 
-          <div 
-            className={classes.marqueeContainer}
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-            onTouchStart={() => setIsPaused(true)}
-            onTouchEnd={() => setIsPaused(false)}
-          >
-            <div className={`${classes.marqueeTrack} ${isPaused ? classes.paused : ''}`}>
-              {marqueeCases.map((item, idx) => {
+          {/* Category Filter Tabs */}
+          <div className={classes.filterTabsContainer}>
+            {clinicalCategories.map((cat) => (
+              <button
+                key={cat.id}
+                className={`${classes.filterTab} ${activeCategory === cat.id ? classes.activeTab : ''}`}
+                onClick={() => setActiveCategory(cat.id)}
+              >
+                {t(cat.labelKey)}
+              </button>
+            ))}
+          </div>
+
+          {/* Categorized Cases Grid */}
+          <motion.div className={classes.casesGrid} layout>
+            <AnimatePresence mode="popLayout">
+              {filteredCases.map((item) => {
                 const caseTitle = t(`job_description.showcase.cases.${item.id}.title`);
                 const caseCat = t(`job_description.showcase.cases.${item.id}.category`);
+                const photosCount = item.images.length;
+                const countText = photosCount === 1 
+                  ? t('job_description.showcase.photos_count_one')
+                  : t('job_description.showcase.photos_count_other', { count: photosCount });
+
                 return (
-                  <div 
-                    key={`${item.id}-${idx}`}
+                  <motion.div 
+                    key={item.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.3 }}
                     className={classes.caseCard}
-                    onClick={() => setSelectedCase(item)}
+                    onClick={() => handleOpenCase(item)}
                     role="button"
                     tabIndex={0}
                     aria-label={caseTitle}
                   >
                     <div className={classes.caseImageWrapper}>
                       <img 
-                        src={item.image} 
+                        src={item.coverImage} 
                         alt={caseTitle}
                         loading="lazy"
                         className={classes.caseImage}
                       />
+                      
+                      {/* Count Badge Overlay */}
+                      <div className={classes.countBadge}>
+                        <Images size={13} />
+                        <span>{countText}</span>
+                      </div>
+
                       <div className={classes.caseOverlay}>
                         <div className={classes.zoomBadge}>
-                          <Maximize2 size={16} />
+                          <Maximize2 size={18} />
                         </div>
                       </div>
                     </div>
+
                     <div className={classes.caseInfo}>
                       <span className={classes.caseCategory}>{caseCat}</span>
                       <h4 className={classes.caseTitle}>{caseTitle}</h4>
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
-            </div>
-          </div>
+            </AnimatePresence>
+          </motion.div>
         </motion.div>
       </Container>
 
-      {/* Lightbox Modal Preview */}
+      {/* Interactive Multi-Image Gallery Lightbox Modal */}
       <AnimatePresence>
         {selectedCase && (
           <motion.div 
@@ -267,22 +324,71 @@ export default function JobDescription() {
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Close Button */}
               <button 
                 className={classes.modalCloseBtn}
                 onClick={() => setSelectedCase(null)}
                 aria-label="Close modal"
               >
-                <X size={24} />
+                <X size={22} />
               </button>
 
-              <div className={classes.modalImageWrapper}>
-                <img 
-                  src={selectedCase.image} 
-                  alt={t(`job_description.showcase.cases.${selectedCase.id}.title`)} 
-                  className={classes.modalImage}
-                />
+              {/* Main Image Container & Navigation Arrows */}
+              <div className={classes.modalGalleryViewer}>
+                {selectedCase.images.length > 1 && (
+                  <>
+                    <button 
+                      className={`${classes.modalNavBtn} ${classes.prevBtn}`}
+                      onClick={isRtl ? handleNextImage : handlePrevImage}
+                      aria-label="Previous image"
+                    >
+                      <ChevronLeft size={24} />
+                    </button>
+                    
+                    <button 
+                      className={`${classes.modalNavBtn} ${classes.nextBtn}`}
+                      onClick={isRtl ? handlePrevImage : handleNextImage}
+                      aria-label="Next image"
+                    >
+                      <ChevronRight size={24} />
+                    </button>
+                  </>
+                )}
+
+                {/* Main Active Image */}
+                <div className={classes.modalImageWrapper}>
+                  <img 
+                    src={selectedCase.images[currentImageIndex]} 
+                    alt={`${t(`job_description.showcase.cases.${selectedCase.id}.title`)} - ${currentImageIndex + 1}`} 
+                    className={classes.modalImage}
+                  />
+                  
+                  {/* Active Image Position Counter Badge */}
+                  {selectedCase.images.length > 1 && (
+                    <div className={classes.modalCounterBadge}>
+                      <Layers3 size={13} />
+                      <span>{currentImageIndex + 1} / {selectedCase.images.length}</span>
+                    </div>
+                  )}
+                </div>
               </div>
 
+              {/* Thumbnails Navigation Strip */}
+              {selectedCase.images.length > 1 && (
+                <div className={classes.modalThumbnailsStrip}>
+                  {selectedCase.images.map((imgUrl, index) => (
+                    <button
+                      key={index}
+                      className={`${classes.modalThumbBtn} ${currentImageIndex === index ? classes.activeThumb : ''}`}
+                      onClick={() => setCurrentImageIndex(index)}
+                    >
+                      <img src={imgUrl} alt={`Thumbnail ${index + 1}`} className={classes.thumbImg} />
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {/* Modal Footer Info */}
               <div className={classes.modalFooter}>
                 <span className={classes.modalCategory}>
                   {t(`job_description.showcase.cases.${selectedCase.id}.category`)}
@@ -298,3 +404,4 @@ export default function JobDescription() {
     </section>
   );
 }
+

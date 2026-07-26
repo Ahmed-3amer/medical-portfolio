@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -7,7 +7,13 @@ import {
   Calendar, 
   Maximize2, 
   X, 
-  FileCheck
+  FileCheck,
+  ChevronLeft,
+  ChevronRight,
+  GraduationCap,
+  FileBadge,
+  Sparkles,
+  Layers
 } from 'lucide-react';
 import { Container } from '@/components/Container';
 import { SectionHeader } from '@/components/SectionHeader';
@@ -15,24 +21,81 @@ import { certificateItems } from '@/data/certificates';
 import { fadeInUp, staggerContainerMedium } from '@/utils/animations';
 import classes from './Certificates.module.css';
 
+const ITEMS_PER_PAGE = 6;
+
+const categoryIcons = {
+  all: Layers,
+  academic: GraduationCap,
+  licenses: FileBadge,
+  training: Sparkles
+};
+
 export default function Certificates() {
-  const { t } = useTranslation();
-  const [selectedCert, setSelectedCert] = useState(null);
+  const { t, i18n } = useTranslation();
+  const isRtl = i18n.language === 'ar';
+
+  const [activeCategory, setActiveCategory] = useState('all');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [modalIndex, setModalIndex] = useState(null);
   const [failedImages, setFailedImages] = useState({});
 
   const handleImageError = (certId) => {
     setFailedImages((prev) => ({ ...prev, [certId]: true }));
   };
 
-  // Handle ESC key and scroll lock for Modal
+  // Filter items by category
+  const filteredCertificates = useMemo(() => {
+    if (activeCategory === 'all') return certificateItems;
+    return certificateItems.filter((item) => item.category === activeCategory);
+  }, [activeCategory]);
+
+  // Total pages calculation
+  const totalPages = Math.ceil(filteredCertificates.length / ITEMS_PER_PAGE);
+
+  // Paginated slice
+  const paginatedCertificates = useMemo(() => {
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    return filteredCertificates.slice(start, start + ITEMS_PER_PAGE);
+  }, [filteredCertificates, currentPage]);
+
+  // Reset to page 1 when category changes
+  const handleCategoryChange = (catKey) => {
+    setActiveCategory(catKey);
+    setCurrentPage(1);
+  };
+
+  // Modal navigation handlers
+  const handleOpenModal = (indexInPaginated) => {
+    const globalFilteredIndex = (currentPage - 1) * ITEMS_PER_PAGE + indexInPaginated;
+    setModalIndex(globalFilteredIndex);
+  };
+
+  const handlePrevModal = (e) => {
+    if (e) e.stopPropagation();
+    if (modalIndex === null) return;
+    setModalIndex((prev) => (prev === 0 ? filteredCertificates.length - 1 : prev - 1));
+  };
+
+  const handleNextModal = (e) => {
+    if (e) e.stopPropagation();
+    if (modalIndex === null) return;
+    setModalIndex((prev) => (prev === filteredCertificates.length - 1 ? 0 : prev + 1));
+  };
+
+  // Handle keyboard navigation for modal
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
-        setSelectedCert(null);
+      if (modalIndex === null) return;
+      if (e.key === 'Escape') setModalIndex(null);
+      if (e.key === 'ArrowLeft') {
+        isRtl ? handleNextModal() : handlePrevModal();
+      }
+      if (e.key === 'ArrowRight') {
+        isRtl ? handlePrevModal() : handleNextModal();
       }
     };
 
-    if (selectedCert) {
+    if (modalIndex !== null) {
       document.body.style.overflow = 'hidden';
       window.addEventListener('keydown', handleKeyDown);
     } else {
@@ -43,7 +106,13 @@ export default function Certificates() {
       document.body.style.overflow = 'unset';
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [selectedCert]);
+  }, [modalIndex, isRtl]);
+
+  const activeModalCert = modalIndex !== null ? filteredCertificates[modalIndex] : null;
+
+  // Pagination bounds info
+  const startItemNum = (currentPage - 1) * ITEMS_PER_PAGE + 1;
+  const endItemNum = Math.min(currentPage * ITEMS_PER_PAGE, filteredCertificates.length);
 
   return (
     <section id="certificates" className={classes.certificatesSection}>
@@ -55,25 +124,49 @@ export default function Certificates() {
           className={classes.header}
         />
 
+        {/* Category Filter Tabs */}
+        <div className={classes.filterTabsContainer}>
+          {['all', 'academic', 'licenses', 'training'].map((catKey) => {
+            const Icon = categoryIcons[catKey] || Layers;
+            const count = catKey === 'all' 
+              ? certificateItems.length 
+              : certificateItems.filter(item => item.category === catKey).length;
+            const isActive = activeCategory === catKey;
+
+            return (
+              <button
+                key={catKey}
+                onClick={() => handleCategoryChange(catKey)}
+                className={`${classes.filterTab} ${isActive ? classes.filterTabActive : ''}`}
+                type="button"
+              >
+                <Icon size={16} className={classes.tabIcon} />
+                <span>{t(`certificates.categories.${catKey}`)}</span>
+                <span className={classes.tabCountBadge}>{count}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Certificates Grid */}
         <motion.div 
+          key={`${activeCategory}-${currentPage}`}
           className={classes.grid}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          animate="visible"
           variants={staggerContainerMedium}
         >
-          {certificateItems.map((cert) => {
+          {paginatedCertificates.map((cert, index) => {
             const title = t(`certificates.items.${cert.id}.title`);
             const issuer = t(`certificates.items.${cert.id}.issuer`);
             const year = t(`certificates.items.${cert.id}.year`);
-            const description = t(`certificates.items.${cert.id}.description`);
             const hasImageFailed = failedImages[cert.id];
 
             return (
               <motion.div key={cert.id} variants={fadeInUp} className={classes.cardWrapper}>
                 <div 
                   className={classes.certCard}
-                  onClick={() => setSelectedCert(cert)}
+                  onClick={() => handleOpenModal(index)}
                   role="button"
                   tabIndex={0}
                   aria-label={title}
@@ -123,17 +216,64 @@ export default function Certificates() {
             );
           })}
         </motion.div>
+
+        {/* Pagination Bar */}
+        {totalPages > 1 && (
+          <div className={classes.paginationContainer}>
+            <div className={classes.paginationInfo}>
+              {t('certificates.pagination.showing_info', {
+                start: startItemNum,
+                end: endItemNum,
+                total: filteredCertificates.length
+              })}
+            </div>
+
+            <div className={classes.paginationControls}>
+              <button
+                className={classes.pageNavBtn}
+                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+                aria-label="Previous Page"
+              >
+                {isRtl ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
+                <span>{t('certificates.pagination.prev')}</span>
+              </button>
+
+              <div className={classes.pageNumbers}>
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+                  <button
+                    key={pageNum}
+                    onClick={() => setCurrentPage(pageNum)}
+                    className={`${classes.pageNumberBtn} ${currentPage === pageNum ? classes.pageNumberActive : ''}`}
+                  >
+                    {pageNum}
+                  </button>
+                ))}
+              </div>
+
+              <button
+                className={classes.pageNavBtn}
+                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                disabled={currentPage === totalPages}
+                aria-label="Next Page"
+              >
+                <span>{t('certificates.pagination.next')}</span>
+                {isRtl ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
+              </button>
+            </div>
+          </div>
+        )}
       </Container>
 
-      {/* Lightbox Modal Preview */}
+      {/* Lightbox Modal Preview Slider */}
       <AnimatePresence>
-        {selectedCert && (
+        {activeModalCert && (
           <motion.div 
             className={classes.modalBackdrop}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setSelectedCert(null)}
+            onClick={() => setModalIndex(null)}
           >
             <motion.div 
               className={classes.modalContent}
@@ -143,46 +283,80 @@ export default function Certificates() {
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Close Button */}
               <button 
                 className={classes.modalCloseBtn}
-                onClick={() => setSelectedCert(null)}
+                onClick={() => setModalIndex(null)}
                 aria-label="Close modal"
               >
-                <X size={24} />
+                <X size={22} />
               </button>
 
+              {/* Counter Badge */}
+              <div className={classes.modalCounterBadge}>
+                {modalIndex + 1} / {filteredCertificates.length}
+              </div>
+
+              {/* Image & Slider Controls */}
               <div className={classes.modalImageWrapper}>
-                {!failedImages[selectedCert.id] ? (
+                {filteredCertificates.length > 1 && (
+                  <button 
+                    className={`${classes.sliderArrowBtn} ${classes.arrowLeft}`}
+                    onClick={isRtl ? handleNextModal : handlePrevModal}
+                    aria-label="Previous image"
+                  >
+                    <ChevronLeft size={24} />
+                  </button>
+                )}
+
+                {!failedImages[activeModalCert.id] ? (
                   <img 
-                    src={selectedCert.image} 
-                    alt={t(`certificates.items.${selectedCert.id}.title`)} 
+                    key={activeModalCert.id}
+                    src={activeModalCert.image} 
+                    alt={t(`certificates.items.${activeModalCert.id}.title`)} 
                     className={classes.modalImage}
                   />
                 ) : (
                   <div className={classes.modalPlaceholderBox}>
                     <FileCheck size={64} className={classes.modalPlaceholderIcon} />
                     <span className={classes.modalPlaceholderTitle}>
-                      {t(`certificates.items.${selectedCert.id}.title`)}
+                      {t(`certificates.items.${activeModalCert.id}.title`)}
                     </span>
                     <span className={classes.modalPlaceholderSub}>
                       {t('certificates.placeholder_badge')}
                     </span>
                   </div>
                 )}
+
+                {filteredCertificates.length > 1 && (
+                  <button 
+                    className={`${classes.sliderArrowBtn} ${classes.arrowRight}`}
+                    onClick={isRtl ? handlePrevModal : handleNextModal}
+                    aria-label="Next image"
+                  >
+                    <ChevronRight size={24} />
+                  </button>
+                )}
               </div>
 
+              {/* Footer Meta */}
               <div className={classes.modalFooter}>
                 <div className={classes.modalMetaRow}>
                   <span className={classes.modalYearBadge} dir="ltr">
-                    {t(`certificates.items.${selectedCert.id}.year`)}
+                    {t(`certificates.items.${activeModalCert.id}.year`)}
                   </span>
                   <span className={classes.modalIssuer}>
-                    {t(`certificates.items.${selectedCert.id}.issuer`)}
+                    {t(`certificates.items.${activeModalCert.id}.issuer`)}
                   </span>
                 </div>
                 <h3 className={classes.modalTitle}>
-                  {t(`certificates.items.${selectedCert.id}.title`)}
+                  {t(`certificates.items.${activeModalCert.id}.title`)}
                 </h3>
+                {t(`certificates.items.${activeModalCert.id}.description`, { defaultValue: '' }) && (
+                  <p className={classes.modalDescription}>
+                    {t(`certificates.items.${activeModalCert.id}.description`)}
+                  </p>
+                )}
               </div>
             </motion.div>
           </motion.div>

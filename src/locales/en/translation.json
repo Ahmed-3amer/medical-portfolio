@@ -64,24 +64,81 @@
     },
     "showcase": {
       "title": "Clinical Practice Highlights",
-      "subtitle": "Real Imaging & Interventional Procedures Handled in Professional Practice",
-      "click_hint": "Click image to view high-resolution case details",
+      "subtitle": "Categorized Showcase of Real Imaging & Interventional Procedures Handled in Professional Practice",
+      "click_hint": "Click any case card to explore its full high-resolution image gallery",
+      "photos_count_one": "1 Photo",
+      "photos_count_other": "{{count}} Photos",
+      "categories": {
+        "all": "All Cases",
+        "cta": "CT Angiography & 3D (CTA)",
+        "interventional": "Interventional Radiology & DSA",
+        "neuro": "Neurovascular Imaging & Angiography",
+        "biliary": "Biliary Drainage & PTCD"
+      },
       "cases": {
         "case_01": {
-          "title": "3D CT Angiography Reconstruction",
-          "category": "CT Scan & Vascular Imaging"
+          "title": "3D CT Angiography Reconstruction of Aorta & Lower Limbs",
+          "category": "CT Angiography & 3D (CTA)"
         },
         "case_02": {
-          "title": "Interventional C-Arm Guidance",
-          "category": "Interventional Radiology"
+          "title": "Interventional Fluoroscopy & DSA Catheter Angiography",
+          "category": "Interventional Radiology & DSA"
         },
         "case_03": {
-          "title": "High-Resolution MRI Diagnostic Brain Scan",
-          "category": "MRI & Neuroimaging"
+          "title": "Percutaneous Transhepatic Biliary Drainage (PTCD)",
+          "category": "Biliary Drainage & PTCD"
         },
         "case_04": {
-          "title": "Digital Radiography & Orthopedic Assessment",
-          "category": "Digital X-Ray & Radiography"
+          "title": "Interventional ChemoPort Placement & X-Ray Verification",
+          "category": "Interventional Radiology & DSA"
+        },
+        "case_05": {
+          "title": "Cerebral DSA Catheter Angiography Mapping",
+          "category": "Neurovascular Imaging & Angiography"
+        },
+        "case_06": {
+          "title": "Abdominal & Hepatic Arterial DSA Angiogram",
+          "category": "Interventional Radiology & DSA"
+        },
+        "case_07": {
+          "title": "3D CT Angiography of Renal & Abdominal Vasculature",
+          "category": "CT Angiography & 3D (CTA)"
+        },
+        "case_08": {
+          "title": "3D Carotid & Intracranial CT Angiography (Neuro CTA)",
+          "category": "Neurovascular Imaging & Angiography"
+        },
+        "case_09": {
+          "title": "Guided Interventional Vascular Catheterization",
+          "category": "Interventional Radiology & DSA"
+        },
+        "case_10": {
+          "title": "Multi-Angle Peripheral Arterial CTA Reconstruction",
+          "category": "CT Angiography & 3D (CTA)"
+        },
+        "case_11": {
+          "title": "Follow-up Biliary Stenting & Drainage Evaluation",
+          "category": "Biliary Drainage & PTCD"
+        },
+        "case_12": {
+          "title": "3D Cerebral Aneurysm & Neurovascular Assessment",
+          "category": "Neurovascular Imaging & Angiography"
+        },
+        "case_13": {
+          "title": "Selective Interventional Vascular Catheterization",
+          "category": "Interventional Radiology & DSA"
+        },
+        "case_14": {
+          "title": "Precision Intracranial Neuro-Angiographic Mapping",
+          "category": "Neurovascular Imaging & Angiography"
+        },
+        "case_15": {
+          "title": "Advanced Multi-Modality 3D CT Diagnostic Scan",
+          "category": "CT Angiography & 3D (CTA)"
+        },
+        "case_16": {
+          "title": "Specialized Interventional Radiology Case Studies",
+          "category": "Interventional Radiology & DSA"
         }
       }
     }
@@ -206,24 +263,195 @@
   },
   "certificates": {
     "title": "Certificates & Accreditations",
-    "subtitle": "Professional Recognitions, Radiation Safety Licenses & Specialized Training",
-    "click_hint": "Click card to view high-resolution certificate",
-    "placeholder_badge": "Official Accreditation",
+    "subtitle": "Academic degrees, official medical practice licenses, radiation safety credentials & ESR memberships",
+    "click_hint": "Click on any card to preview in high resolution and navigate through the gallery",
+    "placeholder_badge": "Verified Credential",
+    "pagination": {
+      "prev": "Previous",
+      "next": "Next",
+      "page_of": "Page {{current}} of {{total}}",
+      "showing_info": "Showing {{start}} - {{end}} of {{total}} credentials"
+    },
+    "categories": {
+      "all": "All Credentials",
+      "academic": "Academic Degrees",
+      "licenses": "Licenses & Memberships",
+      "training": "Specialized Training"
+    },
     "items": {
       "cert_01": {
-        "title": "Licensed Radiation Protection Officer (RPO)",
-        "issuer": "Egyptian Atomic Energy Authority (EAEA)",
-        "year": "2025 – 2026"
+        "title": "Diploma Graduation Certificate - Technical Health Institute Tanta",
+        "issuer": "Ministry of Health & Population - Radiography Division",
+        "year": "2015",
+        "description": "Health Institute Diploma awarded with Distinction (89.84%) in Radiography & Medical Imaging Technology."
       },
       "cert_02": {
-        "title": "Bachelor of Diagnostic & Interventional Radiologic Technology",
-        "issuer": "Faculty of Allied Medical Sciences",
-        "year": "2014"
+        "title": "Official Technical Health Institute Diploma Certificate",
+        "issuer": "Ministry of Higher Education - Health Institute Tanta",
+        "year": "2016",
+        "description": "Official Accredited Radiography Diploma with Distinction Grade."
       },
       "cert_03": {
-        "title": "Siemens Healthineers Application Specialist Certification",
-        "issuer": "Siemens Healthineers Academy",
-        "year": "2017"
+        "title": "Provisional Radiography Graduation Certificate",
+        "issuer": "Technical Health Institute Tanta - Alumni Affairs",
+        "year": "2016",
+        "description": "Official provisional graduation certificate confirming completion of Radiography diploma."
+      },
+      "cert_06": {
+        "title": "Official Academic Transcript & Subject Grades",
+        "issuer": "Ministry of Health & Population - Radiography Dept.",
+        "year": "2016",
+        "description": "Official second-year transcript with Distinction grade covering Radiography, Oncology, and Nuclear Medicine."
+      },
+      "cert_07": {
+        "title": "Accredited Graduation Certificate (2016 Class)",
+        "issuer": "Health Technical Institute Tanta - Alumni Affairs",
+        "year": "2023",
+        "description": "Verified graduation document with Distinction Grade (89.84%)."
+      },
+      "cert_08": {
+        "title": "Specialized Post-Graduate Diploma in Medical Imaging",
+        "issuer": "Ministry of Health & Population - Alumni Affairs",
+        "year": "2025",
+        "description": "Specialized Higher Diploma in Radiography & Medical Imaging (Very Good Grade 78.45%) issued for Canadian Accreditation."
+      },
+      "cert_12": {
+        "title": "Official Certified Graduation Diploma (Canada Validation)",
+        "issuer": "Technical Health Institute Tanta - Ministry of Health",
+        "year": "2026",
+        "description": "Official certified diploma certificate prepared for Canadian credential verification (Distinction Grade)."
+      },
+      "cert_13": {
+        "title": "First Year Official Academic Transcript (Canada)",
+        "issuer": "Imbaba Health Technical Institute - Ministry of Health",
+        "year": "2026",
+        "description": "Certified first-year radiography transcript (Very Good Grade 77.75%) prepared for Canadian verification."
+      },
+      "cert_14": {
+        "title": "Second Year Official Academic Transcript (Canada)",
+        "issuer": "Technical Health Institute Tanta - Ministry of Health",
+        "year": "2026",
+        "description": "Certified second-year radiography transcript (Distinction Grade 584/650) prepared for Canadian verification."
+      },
+      "cert_15": {
+        "title": "Official Academic Credit Hours Breakdown (Canada)",
+        "issuer": "Ministry of Health & Population - Alumni Affairs",
+        "year": "2026",
+        "description": "Certified breakdown of theoretical and practical credit hours for Canadian credential evaluation."
+      },
+      "cert_20": {
+        "title": "Academic Honor & Excellence Shield - B.Sc. Medical Imaging",
+        "issuer": "Ministry of Higher Education & MOH - Tanta University",
+        "year": "2025",
+        "description": "Shield of Honor awarded for graduating with Distinction in Bachelor of Medical Imaging Sciences."
+      },
+      "lic_01": {
+        "title": "Administrative Appointment Decree - Chief Radiographer",
+        "issuer": "Warith International Cancer Institute",
+        "year": "2022",
+        "description": "Official administrative appointment as Chief Radiography Technologist at Warith Cancer Institute."
+      },
+      "lic_02": {
+        "title": "Professional Accreditation ID Card - Lead Radiographer",
+        "issuer": "Authority of Health & Medical Education - Iraq",
+        "year": "2022",
+        "description": "Official accreditation ID card as Lead Radiographer at Warith International Cancer Institute."
+      },
+      "lic_03": {
+        "title": "B.Sc. Professional Registration ID Card",
+        "issuer": "Syndicate of Health Technology Sciences",
+        "year": "2024",
+        "description": "Official registration card for Bachelor of Health Technology Sciences (2024/2025)."
+      },
+      "lic_04": {
+        "title": "European Society of Radiology Membership (ESR 2024)",
+        "issuer": "European Society of Radiology (ESR)",
+        "year": "2024",
+        "description": "Official International Corresponding Member Certificate in ESR (Member ID 97709)."
+      },
+      "lic_05": {
+        "title": "European Society of Radiology Membership (ESR 2025)",
+        "issuer": "European Society of Radiology (ESR)",
+        "year": "2025",
+        "description": "Official International Member Certificate renewal in ESR for 2025."
+      },
+      "lic_06": {
+        "title": "European Society of Radiology Membership (ESR 2023)",
+        "issuer": "European Society of Radiology (ESR)",
+        "year": "2023",
+        "description": "Official International Member Certificate in ESR (Vienna) for 2023."
+      },
+      "lic_07": {
+        "title": "European Society of Radiology Membership (ESR 2026)",
+        "issuer": "European Society of Radiology (ESR)",
+        "year": "2026",
+        "description": "Official International Member Certificate renewal in ESR for 2026."
+      },
+      "lic_08": {
+        "title": "Official Medical Practice License - Ministry of Health",
+        "issuer": "Ministry of Health - General Licensing Dept.",
+        "year": "2016",
+        "description": "Official Medical Practice License Registration No. 14758."
+      },
+      "cert_09": {
+        "title": "Radiation Protection Officer (RPO) Certificate",
+        "issuer": "Egyptian Atomic Energy Authority (EAEA)",
+        "year": "2026",
+        "description": "Certified 120-hour RPO training program on ionizing radiation safety and radioactive materials."
+      },
+      "cert_10": {
+        "title": "International Radiation Protection Certification (EAEA)",
+        "issuer": "Egyptian Atomic Energy Authority (E.A.E.A)",
+        "year": "2026",
+        "description": "Official English International RPO Certification (Graduate Level - 120 Hours)."
+      },
+      "cert_11": {
+        "title": "Experience Certificate & Commendation - Cancer Institute",
+        "issuer": "Warith International Cancer Institute",
+        "year": "2022",
+        "description": "Official experience certification with special commendation for outstanding performance in clinical operations."
+      },
+      "trn_01": {
+        "title": "Siemens MRI Magnetom Essenza 1.5T Application Certificate",
+        "issuer": "Siemens Healthineers",
+        "year": "2016",
+        "description": "Advanced application training on MRI Magnetom Essenza 1.5T (Syngo, Neuro, Oncology, MSK)."
+      },
+      "cert_04": {
+        "title": "Philips Azurion 7B20 Cathlab Application Certificate",
+        "issuer": "Philips Healthcare & Al-Bahja Trading",
+        "year": "2022",
+        "description": "Specialized application training on Philips Azurion 7B20 Cathlab Interventional System."
+      },
+      "cert_05": {
+        "title": "Philips Incisive CT 128 Slices Application Certificate",
+        "issuer": "Philips Healthcare & Al-Bahja Trading",
+        "year": "2022",
+        "description": "Advanced application training on 128-Slice Scanner Philips Incisive CT."
+      },
+      "cert_16": {
+        "title": "Project Management Certification Strategy Course",
+        "issuer": "LinkedIn Learning & Project Management Institute (PMI)",
+        "year": "2025",
+        "description": "PMI-Authorized course in project management strategy and career advancement."
+      },
+      "cert_17": {
+        "title": "Project Management & Professional Growth Certificate",
+        "issuer": "LinkedIn Learning",
+        "year": "2025",
+        "description": "Professional development course in project management and leadership."
+      },
+      "cert_18": {
+        "title": "AI Applications in Healthcare Certification",
+        "issuer": "LinkedIn Learning & Dr. Matthew Lungren",
+        "year": "2025",
+        "description": "Specialized course in Artificial Intelligence applications and digital transformation in Healthcare IT."
+      },
+      "cert_19": {
+        "title": "Cybersecurity & Transport Layer Security Certificate (TLS/SSL)",
+        "issuer": "LinkedIn Learning",
+        "year": "2025",
+        "description": "Specialized certification in network encryption protocols and medical data protection."
       }
     }
   },
